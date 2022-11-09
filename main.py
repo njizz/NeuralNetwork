@@ -15,8 +15,8 @@ class LayerDense:
         self.output = np.dot(inputs, self.weights) + self.biases
 
 
-# ReLU is Rectified Linear Unit
 class ActivationReLU:
+    """Rectified Linear Unit Activation Function (ReLU): Outputs the input if positive, otherwise outputs zero"""
     def __init__(self):
         self.output = []
 
@@ -26,6 +26,8 @@ class ActivationReLU:
 
 # Softmax activation
 class ActivationSoftmax:
+    """Softmax Activation Function: takes as input a vector of real numbers, and normalizes it into a
+       probability distribution consisting of probabilities proportional to the exponentials of the input numbers"""
     def __init__(self):
         self.output = []
 
@@ -39,6 +41,7 @@ class ActivationSoftmax:
 
 
 class Loss:
+    """Indicates how bad the model's predictions are"""
     def __init__(self):
         pass
 
@@ -49,6 +52,9 @@ class Loss:
 
 
 class LossCategoricalCrossEntropy(Loss):
+    """Cross-entropy loss measures the performance of a classification model whose output is a
+       probability value between 0 and 1. Cross-entropy loss increases as the predicted probability diverges
+       from the actual label"""
     def forward(self, y_pred, y_true):
         samples = len(y_pred)
         y_pred_clipped = np.clip(y_pred, 1e-7, 1-1e-7)
